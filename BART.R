@@ -23,7 +23,8 @@
 #  - testSetPerformance: The peformance on the test set with numFeatures predictors
 # In addition, the function plots the performance as a function of number of predictors
 BART<-function(X_train,Y_train,X_validate,Y_validate,X_test,Y_test,measure,numPredictors=ncol(X_train)){
-  require(caret, PRROC,EMP,ggplot2)
+  Packages <- c("caret", "ggplot2", "EMP", "PRROC")
+  lapply(Packages, library, character.only = TRUE)
   
   # Backward variable selection based on AUC --------------------------------------------------------
   logit <- glm(Y_train~., data=cbind(X_train,Y_train), family = "binomial")
