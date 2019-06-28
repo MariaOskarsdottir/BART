@@ -14,9 +14,9 @@ Feel free to use this approach and cite it in whatever way you deem suited.
 The function BART in the file ```BART.R``` can be use on any classification dataset to find the optimal set of predictors based on a backwards selection using a specific performance measure.
 The implemented performance measures are 
  - AUC: Area under the receiver operating characteristic curve. 
-    - Argument ```measure='auc'. 
+    - Argument ```measure='auc'```. 
  - PR: Area under the precision recall curve. 
-    - Argument ```measure='pr'. 
+    - Argument ```measure='pr'```. 
  - EMP: Expected maximum profit measure for churn and credit scoring. 
     - Argument ```measure='emp_churn'``` or ```measure='emp_credit'```. 
 
@@ -57,7 +57,7 @@ Y_train <- Y_train[ index_train]
 ```
 Source the function
 ```
-source('BART>.R')
+source('BART.R')
 ```
 Apply BART once with default number of predictors. The performance measure here is AUC.
 ```
