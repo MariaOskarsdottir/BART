@@ -102,12 +102,12 @@ BART<-function(X_train,Y_train,X_validate,Y_validate,X_test,Y_test,measure,numPr
   print(p)
   
   # Combine train and validation sets
-  X_train<-rbind(X_train,X_validate)
-  Y_train<-c(Y_train,Y_validate)
+  X_comb<-rbind(X_train,X_validate)
+  Y_comb<-c(Y_train,Y_validate)
   
   # Model performance on test set with numPredictors predictors
-  reducedFormula<-as.formula(paste('Y_train~',paste(df$removedPredictors[ (nrow(df)-1):(nrow(df)-numPredictors)],collapse = '+'),sep=''))
-  logit <- glm(reducedFormula, data=cbind(X_train,Y_train), family = "binomial")
+  reducedFormula<-as.formula(paste('Y_comb~',paste(df$removedPredictors[ (nrow(df)-1):(nrow(df)-numPredictors)],collapse = '+'),sep=''))
+  logit <- glm(reducedFormula, data=cbind(X_comb,Y_comb), family = "binomial")
   predictions <- predict(logit, newdata = X_test, type = "response")
   if(measure=='auc'){PERF_test <- roc.curve(scores.class0=predictions,weights.class0 = Y_test)$auc}
   if(measure=='pr'){PERF_test <- pr.curve(scores.class0=predictions,weights.class0 = Y_test)$auc.integral}
