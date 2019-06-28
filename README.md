@@ -66,7 +66,7 @@ The function call returns the performance of the full model on the test set.
 [1] 0.8321103
 ```
 The function call also generates a plot with performance as a function of number of features
-![Model performance in AUC](iamges/AUC.png)
+![Model performance in AUC](images/AUC.png)
 
 Use the plot do decide the optimal number of predictors and assign this value to ```numPredictors```.  In this case we go for 5 predictors.
 
