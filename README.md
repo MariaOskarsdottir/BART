@@ -92,9 +92,11 @@ The function call returns the performance of the full model on the test set.
 [1] 0.01213743
 ```
 The function call also generates a plot with performance as a function of number of features
-[Model performance in EMP](images/EMP.png)
 
-Use the plot do decide the optimal number of predictors and assign this value to ```numPredictors```.  We again go for 5 predictors and call the function.
+![Model performance in EMP](images/EMP.png)
+
+Use the plot do decide the optimal number of predictors and assign this value to ```numPredictors```.  
+We again go for 5 predictors and call the function.
 ```
 BART(X_train,Y_train,X_validate,Y_validate,X_test,Y_test,'emp_credit',numPredictors=5)$testSetPerformance
 ```
