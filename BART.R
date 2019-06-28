@@ -1,6 +1,6 @@
 ##################################################################
 # BART: BAckward Regression Trimming
-# Written by Sebastian H??ppner and Mar??a ??skarsd??ttir, June 2019
+# Written by Sebastian Höppner and María Óskarsdóttir, June 2019
 # Based on Bart's favorite feature selection method
 #################################################################
 
