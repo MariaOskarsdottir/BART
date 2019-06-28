@@ -79,7 +79,7 @@ This time the function will return the performance of the reduced model on the t
 [1] 0.8213816
 ```
 
-## BART with EMP
+## BART with the EMP measure
 We use the same data but in the function call we use the meausre EMP for credit scoring, ```measure='emp_credit'```
 Apply BART once with default number of predictors. The performance measure here is AUC.
 ```
