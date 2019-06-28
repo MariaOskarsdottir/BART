@@ -8,6 +8,8 @@ This is how BART works in a classification setting:
 4. Estimate all n-1 logistic regression models with n-2 variables and proceed with the best one in terms of performance on the validation set.  Continue doing this until no variables left in model.
 5. Choose the best model based on the validation set performance and measure the performance on the independent test set
 
+Feel free to use this approach and cite it in whatever way you deem suited.
+
 ## How to use
 The function BART in the file ```BART.R``` can be use on any classification dataset to find the optimal set of predictors based on a backwards selection using a specific performance measure.
 The implemented performance measures are 
@@ -90,7 +92,7 @@ The function call returns the performance of the full model on the test set.
 [1] 0.01213743
 ```
 The function call also generates a plot with performance as a function of number of features
-[Model performance in EMP](iamges/EMP.png)
+[Model performance in EMP](images/EMP.png)
 
 Use the plot do decide the optimal number of predictors and assign this value to ```numPredictors```.  We again go for 5 predictors and call the function.
 ```
