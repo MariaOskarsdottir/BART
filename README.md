@@ -27,7 +27,7 @@ Load data
 ```
 hmeq <- read.csv("hmeq.csv")
 ```
-#Since we're going to fit logistic regression models, we remove rows with NA values:
+Since we're going to fit logistic regression models, we remove rows with NA values:
 ```
 hmeq <- hmeq[complete.cases(hmeq), ]
 ``` 
