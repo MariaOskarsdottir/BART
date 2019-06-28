@@ -1,5 +1,5 @@
-# BART
-BART: BAckward Regression Trimming. A variable selection procedure which aims at finding the most compact yet well performing analytical model
+# BART: BAckward Regression Trimming.
+A variable selection procedure which aims at finding the most compact yet well performing analytical model
 
 This is how BART works in a classification setting:
 1. Split the data in training, validation and test set
@@ -37,7 +37,8 @@ X_data<-hmeq[,-1]
 Y_data<-unlist(hmeq[,1])
 ```
 Split data in training, validation and test set 
-```library(caret)
+```
+library(caret)
 set.seed(2019)
 index_test  <- createDataPartition(y = Y_data, times = 1, p = 0.2, list = FALSE)
 set.seed(2019)
@@ -52,16 +53,51 @@ Y_train <-  Y_data[-index_test]
 Y_validate <- Y_train[-index_train]
 Y_train <- Y_train[ index_train]
 ```
-Apply BART once with default number of predictors. The performance measure here is AUC
+Source the function
+```
+source('BART>.R')
+```
+Apply BART once with default number of predictors. The performance measure here is AUC.
 ```
 BART(X_train,Y_train,X_validate,Y_validate,X_test,Y_test,'auc')$testSetPerformance
 ```
-The function call will generate a plot and return the performance of the full model on the test set.
+The function call returns the performance of the full model on the test set.
+```
+[1] 0.8321103
+```
+The function call also generates a plot with performance as a function of number of features
+[Model performance in AUC](iamges/AUC.png)
 
-Use the plot do decide the optimal number of predictors and assign this value to ```numPredictors```. Call the function again  
+Use the plot do decide the optimal number of predictors and assign this value to ```numPredictors```.  In this case we go for 5 predictors.
+
+Call the function again  
 ```
 BART(X_train,Y_train,X_validate,Y_validate,X_test,Y_test,'auc',numPredictors=5)$testSetPerformance
 ```
 This time the function will return the performance of the reduced model on the test set.
+```
+[1] 0.8213816
+```
 
+## BART with EMP
+We use the same data but in the function call we use the meausre EMP for credit scoring, ```measure='emp_credit'```
+Apply BART once with default number of predictors. The performance measure here is AUC.
+```
+BART(X_train,Y_train,X_validate,Y_validate,X_test,Y_test,'emp_credit')$testSetPerformance
+```
+The function call returns the performance of the full model on the test set.
+```
+[1] 0.01213743
+```
+The function call also generates a plot with performance as a function of number of features
+[Model performance in EMP](iamges/EMP.png)
+
+Use the plot do decide the optimal number of predictors and assign this value to ```numPredictors```.  We again go for 5 predictors and call the function.
+```
+BART(X_train,Y_train,X_validate,Y_validate,X_test,Y_test,'emp_credit',numPredictors=5)$testSetPerformance
+```
+This time the function will return the performance of the reduced model on the test set.
+```
+[1] 0.01135954
+```
 
