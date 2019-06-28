@@ -83,10 +83,10 @@ BART<-function(X_train,Y_train,X_validate,Y_validate,X_test,Y_test,measure,numPr
   # Plot results ------------------------------------------------------------------------------------
   df <- data.frame(PERF = best_PERF, nPredictors = (ncol(X_train)):0,removedPredictors=removed_predictors)
   
-  breaks <- seq(ncol(train)-1, 0, -2)
+  breaks <- seq(ncol(X_train)-1, 0, -2)
   xlabels <- paste(breaks, "Vars")
   xlabels[2:length(xlabels)] <- paste0(xlabels[2:length(xlabels)],
-                                       "\n(", removed_predictors[seq(2, ncol(train)-1, 2)], " out)")
+                                       "\n(", removed_predictors[seq(2, ncol(X_train)-1, 2)], " out)")
   y_lab<-ifelse(measure=='auc','AUC value', ifelse(measure=='pr','PR value',ifelse(measure=='emp_credit','EMP value',ifelse(measure=='emp_churn','EMP value', NA) ) ))
   
   p<-ggplot(data = df, mapping = aes(x = nPredictors, y = PERF)) +
