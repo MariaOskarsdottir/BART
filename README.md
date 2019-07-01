@@ -1,12 +1,13 @@
 # BART: BAckward Regression Trimming.
-A variable selection procedure which aims at finding the most compact yet well performing analytical model
-
+A variable selection procedure which aims at finding the most compact yet well performing analytical model. [^1] 
+ [^1]: [1]	BAESENS B., BART: Backward Regression Trimming, Big Data, forthcoming, 2019.
 This is how BART works in a classification setting:
-1. Split the data in training, validation and test set
-2. Estimate a logistic regression model with all n variables on the training set and measure the performance (e.g. AUC, profit) on the validation set
-3. Estimate n logistic regression models with n-1 variables and proceed with best one in terms of performance on the validation set
-4. Estimate all n-1 logistic regression models with n-2 variables and proceed with the best one in terms of performance on the validation set.  Continue doing this until no variables left in model.
-5. Choose the best model based on the validation set performance and measure the performance on the independent test set
+1.	Split the data in training, validation and test set.  
+2.	Estimate a logistic regression model with all n variables on the training set and measure the performance (e.g. AUC, profit) on the validation set.  
+3.	Estimate n logistic regression models with n-1 variables on the training set and proceed with the best one in terms of performance on the validation set.  
+4.	Estimate all n-1 logistic regression models with n-2 variables on the training set and proceed with the best one in terms of performance on the validation set.  Continue doing this until no variables left in the model.  
+5.	Choose the best model based on the validation set performance.  
+6.	Estimate a model on the combined training and validation set and measure the performance on the independent test set.  
 
 Feel free to use this approach and cite it in whatever way you deem suited.
 
